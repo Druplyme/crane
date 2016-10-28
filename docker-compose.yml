@@ -15,6 +15,6 @@ services:
     image: fortis/stackd-php
     volumes:
       - ./:/var/www/html
-    command: php bin/react.php
+    command: php bin/console m6web:http-process --host php 7000
     ports:
       - "80:7000"
