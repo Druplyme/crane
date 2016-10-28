@@ -13,22 +13,8 @@ services:
 
   php:
     image: fortis/stackd-php
-    environment:
-      PHP_SITE_NAME: dev
-      PHP_HOST_NAME: localhost:7000
-      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
-      PHP_XDEBUG_ENABLED: 0
     volumes:
       - ./:/var/www/html
-    command: sh -c "composer install && php-fpm"
-
-  nginx:
-    image: fortis/stackd-nginx
-    environment:
-      NGINX_SERVER_NAME: localhost
-      NGINX_UPSTREAM_NAME: php
-      NGINX_DOCROOT: web
-    volumes_from:
-      - php
+    command: php bin/react.php
     ports:
-      - "8080:80"
+      - "80:7000"
