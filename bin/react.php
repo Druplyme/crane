@@ -7,9 +7,8 @@ require __DIR__.'/../vendor/autoload.php';
 $loop = React\EventLoop\Factory::create();
 $socket = new React\Socket\Server($loop);
 $http = new React\Http\Server($socket);
-echo 'Started...';
+
 $callback = function ($request, $response) {
-    echo "Got request\n";
     $statusCode = 200;
     $headers = array(
       'Content-Type: text/plain'
